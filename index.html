@@ -112,6 +112,9 @@
   Your browser does not support the audio element.
 </audio>
 
+<button id="playMusicBtn" style="position:absolute; top:20px; right:20px;">🎵 Play Music</button>
+
+
       <div id="controls">
         <div style="display: flex; flex-direction: column; align-items: center">
           <img id="logo" src="images/logo.png" alt="Logo" />
@@ -350,13 +353,16 @@
       }
 
   const music = document.getElementById('backgroundMusic');
-  let isMusicStarted = false;
+  const playBtn = document.getElementById('playMusicBtn');
 
-  document.addEventListener('click', function() {
-    if (!isMusicStarted) {
-      music.play();
-      isMusicStarted = true; // Supaya cuma play 1x saat klik pertama
-    }
+  playBtn.addEventListener('click', function() {
+    music.play()
+      .then(() => {
+        console.log("Musik mulai diputar");
+      })
+      .catch(err => {
+        console.log("Gagal memutar musik:", err);
+      });
   });
 
     </script>
