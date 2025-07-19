@@ -107,7 +107,7 @@
     <div id="container">
       <div id="blur"></div>
 
-    <audio id="backgroundMusic" autoplay loop>
+   <audio id="backgroundMusic" loop>
   <source src="here-with-me.mp3" type="audio/mpeg" />
   Your browser does not support the audio element.
 </audio>
@@ -350,11 +350,12 @@
       }
 
   const music = document.getElementById('backgroundMusic');
+  let isMusicStarted = false;
 
-  // Saat user klik di mana saja di halaman
   document.addEventListener('click', function() {
-    if (!music.paused) {
-      music.pause();
+    if (!isMusicStarted) {
+      music.play();
+      isMusicStarted = true; // Supaya cuma play 1x saat klik pertama
     }
   });
 
